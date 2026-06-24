@@ -1,5 +1,7 @@
 # Ledgerline
 
+**Live demo:** [ledgerline-cyan.vercel.app](https://ledgerline-cyan.vercel.app/) — open the app at [/audit](https://ledgerline-cyan.vercel.app/audit), load sample books, run reconciliation.
+
 Multi-agent audit reconciliation for nonprofit bookkeeping. Ingest messy books (bank CSV, receipts, P2P screenshots, ledger sheets), run a specialist agent swarm, flag anomalies with evidence, and export a board-ready PDF.
 
 **AI proposes — code verifies.** Matching and anomaly detection use deterministic rules; ledger math is recomputed in code, not trusted to the LLM.
@@ -25,7 +27,11 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000), click **Load sample books**, then **Run Reconciliation**.
 
+Or try the hosted demo: [ledgerline-cyan.vercel.app/audit](https://ledgerline-cyan.vercel.app/audit)
+
 ## Deploy on Vercel
+
+**Production:** [https://ledgerline-cyan.vercel.app](https://ledgerline-cyan.vercel.app)
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/shaileshdev4/ledgerline)
 
