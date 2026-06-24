@@ -1,0 +1,145 @@
+{
+  "source": "receipt_image",
+  "transactions": [
+    {
+      "id": "rcpt-001",
+      "source": "receipt_image",
+      "date": "2026-01-03",
+      "amount": 1500,
+      "merchant": "Metro Market",
+      "category": "program_supplies",
+      "description": "Receipt: groceries",
+      "referenceId": "RCPT-4001"
+    },
+    {
+      "id": "rcpt-002",
+      "source": "receipt_image",
+      "date": "2026-01-07",
+      "amount": 220,
+      "merchant": "City Utilities",
+      "category": "utilities",
+      "description": "Receipt: utility payment",
+      "referenceId": "RCPT-4002"
+    },
+    {
+      "id": "rcpt-003",
+      "source": "receipt_image",
+      "date": "2026-01-11",
+      "amount": 145,
+      "merchant": "CodeCamp Transit",
+      "category": "travel",
+      "description": "Receipt: bus cards",
+      "referenceId": "RCPT-4003"
+    },
+    {
+      "id": "rcpt-004",
+      "source": "receipt_image",
+      "date": "2026-01-17",
+      "amount": 89.99,
+      "merchant": "Office Depot",
+      "category": "administrative",
+      "description": "Receipt: ink",
+      "referenceId": "RCPT-4004"
+    },
+    {
+      "id": "rcpt-005",
+      "source": "receipt_image",
+      "date": "2026-01-21",
+      "amount": 540,
+      "merchant": "Community Hall",
+      "category": "program_services",
+      "description": "Receipt: venue",
+      "referenceId": "RCPT-4005"
+    },
+    {
+      "id": "rcpt-006",
+      "source": "receipt_image",
+      "date": "2026-01-25",
+      "amount": 67.43,
+      "merchant": "Staples",
+      "category": "program_supplies",
+      "description": "Receipt: markers and folders",
+      "referenceId": "RCPT-4006"
+    },
+    {
+      "id": "rcpt-007",
+      "source": "receipt_image",
+      "date": "2026-02-01",
+      "amount": 129.5,
+      "merchant": "Zoom",
+      "category": "technology",
+      "description": "Receipt: software",
+      "referenceId": "RCPT-4007"
+    },
+    {
+      "id": "rcpt-008",
+      "source": "receipt_image",
+      "date": "2026-02-04",
+      "amount": 355,
+      "merchant": "Coach Payroll",
+      "category": "personnel",
+      "description": "Receipt: stipend disbursement",
+      "referenceId": "RCPT-4008"
+    },
+    {
+      "id": "rcpt-009",
+      "source": "receipt_image",
+      "date": "2026-02-12",
+      "amount": 412.8,
+      "merchant": "FedEx",
+      "category": "administrative",
+      "description": "Receipt: shipping",
+      "referenceId": "RCPT-4009"
+    },
+    {
+      "id": "rcpt-010",
+      "source": "receipt_image",
+      "date": "2026-02-20",
+      "amount": 780,
+      "merchant": "Youth Sports Gear",
+      "category": "program_supplies",
+      "description": "Receipt: uniforms",
+      "referenceId": "RCPT-4010"
+    },
+    {
+      "id": "rcpt-011",
+      "source": "receipt_image",
+      "date": "2026-03-03",
+      "amount": 315,
+      "merchant": "AWS",
+      "category": "technology",
+      "description": "Receipt: hosting",
+      "referenceId": "RCPT-4011"
+    },
+    {
+      "id": "rcpt-012",
+      "source": "receipt_image",
+      "date": "2026-03-10",
+      "amount": 240,
+      "merchant": "Volunteer Lunch",
+      "category": "program_services",
+      "description": "Receipt: mentor catering",
+      "referenceId": "RCPT-4012"
+    },
+    {
+      "id": "rcpt-013",
+      "source": "receipt_image",
+      "date": "2026-03-23",
+      "amount": 197.75,
+      "merchant": "Canva",
+      "category": "administrative",
+      "description": "Receipt: subscription",
+      "referenceId": "RCPT-4013"
+    },
+    {
+      "id": "rcpt-014",
+      "source": "receipt_image",
+      "date": "2026-03-28",
+      "amount": 64.1,
+      "merchant": "Local Print Shop",
+      "category": "fundraising",
+      "description": "Flyers for fundraiser",
+      "referenceId": "RCPT-4014"
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "source": "p2p_screenshot",
+  "transactions": [
+    {
+      "id": "p2p-001",
+      "source": "p2p_screenshot",
+      "date": "2026-01-12",
+      "amount": 75,
+      "merchant": "Coach Mia",
+      "category": "personnel",
+      "description": "Stipend transfer",
+      "referenceId": "P2P-3001"
+    },
+    {
+      "id": "p2p-002",
+      "source": "p2p_screenshot",
+      "date": "2026-01-26",
+      "amount": 67.43,
+      "merchant": "Staples",
+      "category": "program_supplies",
+      "description": "Reimbursement for supplies",
+      "referenceId": "P2P-3002",
+      "_plantedAnomaly": "duplicate_payment"
+    },
+    {
+      "id": "p2p-003",
+      "source": "p2p_screenshot",
+      "date": "2026-02-02",
+      "amount": 58.2,
+      "merchant": "Volunteer Snacks",
+      "category": "program_services",
+      "description": "Volunteer snacks",
+      "referenceId": "P2P-3003"
+    },
+    {
+      "id": "p2p-004",
+      "source": "p2p_screenshot",
+      "date": "2026-02-15",
+      "amount": 110,
+      "merchant": "Field Transport",
+      "category": "travel",
+      "description": "Ride reimbursement",
+      "referenceId": "P2P-3004"
+    },
+    {
+      "id": "p2p-005",
+      "source": "p2p_screenshot",
+      "date": "2026-02-28",
+      "amount": 49.99,
+      "merchant": "Spotify",
+      "category": "program_supplies",
+      "description": "Youth workshop playlist",
+      "referenceId": "P2P-3005",
+      "_plantedAnomaly": "category_mismatch"
+    },
+    {
+      "id": "p2p-006",
+      "source": "p2p_screenshot",
+      "date": "2026-03-09",
+      "amount": 92.35,
+      "merchant": "Volunteer Fuel",
+      "category": "travel",
+      "description": "Fuel reimbursement",
+      "referenceId": "P2P-3006"
+    },
+    {
+      "id": "p2p-007",
+      "source": "p2p_screenshot",
+      "date": "2026-03-21",
+      "amount": 150,
+      "merchant": "Parent Mentor",
+      "category": "program_services",
+      "description": "Mentor dinner stipend",
+      "referenceId": "P2P-3007"
+    }
+  ]
+}

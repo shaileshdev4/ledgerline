@@ -1,0 +1,8 @@
+id,date,amount,merchant,description,category,reference_id
+ledger-001,2026-01-03,1500.00,"Metro Market","Workshop groceries",program_supplies,LG-2001
+ledger-002,2026-01-17,89.99,"Office Depot","Printer ink",administrative,LG-2002
+ledger-003,2026-02-04,355.00,"Coach Payroll","Coach stipend",personnel,LG-2003
+ledger-004,2026-02-20,780.00,"Youth Sports Gear","Uniforms batch 1",program_supplies,LG-2004
+ledger-005,2026-03-03,315.00,"AWS","Cloud hosting",technology,LG-2005
+ledger-006,2026-03-14,240.00,"Neighborhood Hardware","Emergency repair materials",program_supplies,LG-2006
+ledger-007,2026-03-23,197.75,"Canva","Design subscription",administrative,LG-2007
