@@ -60,6 +60,13 @@ a {
   flex-direction: column;
 }
 
+/* Workspace: lock viewport height so panels scroll internally, not the page */
+.audit-shell--workspace {
+  height: 100dvh;
+  max-height: 100dvh;
+  overflow: hidden;
+}
+
 .topbar {
   height: 64px;
   border-bottom: 1px solid var(--border);
@@ -185,18 +192,30 @@ a {
 .audit-grid {
   flex: 1;
   min-height: 0;
+  overflow: hidden;
   display: grid;
   grid-template-columns: 1.1fr 0.95fr 1fr;
 }
 
 .audit-panel {
   min-height: 0;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
 }
 
 .audit-panel-body {
   flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.audit-panel-body > * {
+  flex: 1;
+  min-height: 0;
+  height: 100%;
 }
 
 .audit-panel-anomalies {
@@ -234,6 +253,10 @@ a {
 .scroll-panel {
   overflow: auto;
   min-height: 0;
+}
+
+.audit-panel .audit-panel-body.scroll-panel {
+  flex: 1;
 }
 
 .anomaly-scroll {
@@ -714,7 +737,7 @@ a {
 @media (max-width: 1100px) {
   .audit-grid {
     grid-template-columns: 1fr;
-    grid-auto-rows: minmax(280px, auto);
+    grid-auto-rows: minmax(240px, 38vh);
   }
 
   .landing-hero-grid,

@@ -38,7 +38,7 @@ export function AnomalyReport({
     return (
       <div className="scroll-panel" style={{ padding: 14 }}>
         <p style={{ color: "var(--ink-ghost)", fontSize: 12 }}>
-          No high-severity anomalies surfaced yet.
+          No anomalies surfaced yet.
         </p>
       </div>
     );

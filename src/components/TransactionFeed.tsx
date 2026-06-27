@@ -1,8 +1,33 @@
 import { SourcePill } from "./SourcePill";
-import type { Anomaly, Transaction } from "@/types";
+import type { Anomaly, AnomalySeverity, Transaction } from "@/types";
 
 function fmtMoney(value: number): string {
   return `$${value.toFixed(2)}`;
+}
+
+const SEVERITY_RANK: Record<AnomalySeverity, number> = {
+  high: 3,
+  medium: 2,
+  low: 1,
+};
+
+function sortByFlagSeverity(transactions: Transaction[], anomalies: Anomaly[]): Transaction[] {
+  const originalIndex = new Map(transactions.map((t, i) => [t.id, i]));
+  const severityByTxn = new Map<string, number>();
+
+  for (const anomaly of anomalies) {
+    const rank = SEVERITY_RANK[anomaly.severity];
+    for (const id of anomaly.transactionIds) {
+      severityByTxn.set(id, Math.max(severityByTxn.get(id) ?? 0, rank));
+    }
+  }
+
+  return [...transactions].sort((a, b) => {
+    const rankA = severityByTxn.get(a.id) ?? 0;
+    const rankB = severityByTxn.get(b.id) ?? 0;
+    if (rankA !== rankB) return rankB - rankA;
+    return (originalIndex.get(a.id) ?? 0) - (originalIndex.get(b.id) ?? 0);
+  });
 }
 
 export function TransactionFeed({
@@ -15,10 +40,11 @@ export function TransactionFeed({
   scanningId?: string;
 }) {
   const flagged = new Set(anomalies.flatMap((a) => a.transactionIds));
+  const sorted = sortByFlagSeverity(transactions, anomalies);
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 8, padding: 12 }}>
-      {transactions.map((t) => {
+      {sorted.map((t) => {
         const isFlagged = flagged.has(t.id);
         const isScanning = scanningId === t.id;
 

@@ -22,9 +22,7 @@ const DropZone = dynamic(
   () => import("@/components/DropZone").then((m) => m.DropZone),
   {
     ssr: false,
-    loading: () => (
-      <div className="audit-loading">Loading upload…</div>
-    ),
+    loading: () => <div className="audit-loading">Loading upload…</div>,
   },
 );
 
@@ -99,7 +97,7 @@ async function playTrace(
     if (event.type === "anomaly_flagged" && event.data?.anomalyId) {
       const anomalyId = event.data.anomalyId as string;
       const anomaly = full.anomalies.find((a) => a.id === anomalyId);
-      if (anomaly && anomaly.severity === "high") {
+      if (anomaly) {
         await new Promise((r) => setTimeout(r, 150));
         callbacks.onAnomaly(anomaly);
       }
@@ -114,11 +112,7 @@ async function playTrace(
   }
 }
 
-function IngestBanner({
-  summary,
-}: {
-  summary: IngestSummary;
-}) {
+function IngestBanner({ summary }: { summary: IngestSummary }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -130,11 +124,13 @@ function IngestBanner({
       >
         <span className="ingest-banner-label">Ingested</span>
         <span>
-          {summary.totalCount} transactions · {summary.filesProcessed.length} files
+          {summary.totalCount} transactions · {summary.filesProcessed.length}{" "}
+          files
         </span>
         {summary.warnings.length > 0 && (
           <span className="ingest-banner-warn">
-            {summary.warnings.length} warning{summary.warnings.length > 1 ? "s" : ""}
+            {summary.warnings.length} warning
+            {summary.warnings.length > 1 ? "s" : ""}
           </span>
         )}
         {open ? <HiChevronUp size={14} /> : <HiChevronDown size={14} />}
@@ -154,10 +150,14 @@ function IngestBanner({
 
 export default function AuditPage() {
   const [phase, setPhase] = useState<Phase>("upload");
-  const [organizationName, setOrganizationName] = useState("Youth Code Foundation");
-  const [period, setPeriod] = useState("Q1 2026");
-  const [loadedTransactions, setLoadedTransactions] = useState<Transaction[]>([]);
-  const [ingestSummary, setIngestSummary] = useState<IngestSummary | null>(null);
+  const [organizationName, setOrganizationName] = useState("");
+  const [period, setPeriod] = useState("");
+  const [loadedTransactions, setLoadedTransactions] = useState<Transaction[]>(
+    [],
+  );
+  const [ingestSummary, setIngestSummary] = useState<IngestSummary | null>(
+    null,
+  );
 
   const [runState, setRunState] = useState<RunState>("idle");
   const [visibleTrace, setVisibleTrace] = useState<TraceEvent[]>([]);
@@ -228,7 +228,7 @@ export default function AuditPage() {
 
       if (!abortRef.current) {
         setResult(full);
-        setVisibleAnomalies(full.anomalies.filter((a) => a.severity === "high"));
+        setVisibleAnomalies(full.anomalies);
         setScanningId(undefined);
         setRunState("done");
       }
@@ -280,7 +280,7 @@ export default function AuditPage() {
   }
 
   return (
-    <div className="audit-shell">
+    <div className="audit-shell audit-shell--workspace">
       <Topbar
         org={organizationName}
         period={period}
@@ -296,7 +296,10 @@ export default function AuditPage() {
       <StatusBar summary={summary} loading={runState === "running"} />
 
       <div className="audit-grid">
-        <div className="audit-panel" style={{ borderRight: "1px solid var(--border)" }}>
+        <div
+          className="audit-panel"
+          style={{ borderRight: "1px solid var(--border)" }}
+        >
           {panelHeader("Transaction Feed", countBadge(transactions.length))}
           <div className="scroll-panel ledger-grid audit-panel-body">
             <TransactionFeed
@@ -307,9 +310,14 @@ export default function AuditPage() {
           </div>
         </div>
 
-        <div className="audit-panel" style={{ borderRight: "1px solid var(--border)" }}>
+        <div
+          className="audit-panel"
+          style={{ borderRight: "1px solid var(--border)" }}
+        >
           {panelHeader("Live Agent Trace")}
-          <AgentTrace trace={visibleTrace} agentStatuses={agentStatuses} />
+          <div className="audit-panel-body">
+            <AgentTrace trace={visibleTrace} agentStatuses={agentStatuses} />
+          </div>
         </div>
 
         <div className="audit-panel audit-panel-anomalies">
@@ -317,12 +325,14 @@ export default function AuditPage() {
             "Anomaly Report",
             visibleAnomalies.length > 0
               ? countBadge(`${visibleAnomalies.length} flags`, true)
-              : countBadge("—"),
+              : countBadge("-"),
           )}
-          <AnomalyReport
-            anomalies={visibleAnomalies}
-            requiresHumanReview={summary?.requiresHumanReview ?? false}
-          />
+          <div className="audit-panel-body">
+            <AnomalyReport
+              anomalies={visibleAnomalies}
+              requiresHumanReview={summary?.requiresHumanReview ?? false}
+            />
+          </div>
         </div>
       </div>
 
