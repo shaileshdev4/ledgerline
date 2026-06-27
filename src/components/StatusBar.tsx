@@ -85,7 +85,11 @@ export function StatusBar({
       )}
       {stat(
         "Anomalies",
-        summary?.anomalyCount ?? "-",
+        summary
+          ? summary.flaggedTransactionCount > summary.anomalyCount
+            ? `${summary.anomalyCount} · ${summary.flaggedTransactionCount} txns`
+            : summary.anomalyCount
+          : "-",
         summary?.anomalyCount ? "var(--red)" : "var(--ink)",
       )}
       {stat(
@@ -152,7 +156,7 @@ export function LedgerFooter({ ledger }: { ledger: LedgerSnapshot | null }) {
           {stat("Debits", `$${ledger.totalDebits.toFixed(2)}`)}
           {stat("Matched", ledger.matchedCount, "var(--green)")}
           {stat("Unmatched", ledger.unmatchedCount)}
-          {stat("Flagged", ledger.flaggedCount, "var(--red)")}
+          {stat("Flagged txns", ledger.flaggedCount, "var(--red)")}
         </>
       ) : (
         <span

@@ -24,7 +24,7 @@ function main() {
 
   const ledger = evaluateLedger(MOCK_TRANSACTIONS, [], anomalies);
   assert(ledger.transactionCount === 41, `Expected 41 transactions, got ${ledger.transactionCount}`);
-  assert(ledger.flaggedCount === 3, `Expected 3 flagged anomalies, got ${ledger.flaggedCount}`);
+  assert(ledger.flaggedCount === 4, `Expected 4 flagged transactions, got ${ledger.flaggedCount}`);
 
   console.log("Engine harness passed");
   console.log(`Transactions: ${ledger.transactionCount}`);

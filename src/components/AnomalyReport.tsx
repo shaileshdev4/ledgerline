@@ -2,10 +2,16 @@
 
 import { useState } from "react";
 import { HiExclamationTriangle, HiSparkles } from "react-icons/hi2";
-import type { Anomaly } from "@/types";
+import type { Anomaly, AnomalySeverity } from "@/types";
 import { ConfidenceBar } from "./ConfidenceBar";
 
 type ExplanationMap = Record<string, string>;
+
+const SEVERITY_BORDER: Record<AnomalySeverity, string> = {
+  high: "var(--red)",
+  medium: "var(--amber)",
+  low: "var(--ink-dim)",
+};
 
 export function AnomalyReport({
   anomalies,
@@ -70,7 +76,7 @@ export function AnomalyReport({
           key={a.id}
           style={{
             border: "1px solid var(--border)",
-            borderLeft: "3px solid var(--red)",
+            borderLeft: `3px solid ${SEVERITY_BORDER[a.severity]}`,
             borderRadius: 8,
             padding: "10px 10px 9px",
             background: "var(--bg)",
@@ -80,7 +86,7 @@ export function AnomalyReport({
             <strong style={{ fontSize: 13, color: "var(--ink)" }}>
               {a.type.replace(/_/g, " ")}
             </strong>
-            <ConfidenceBar confidence={a.confidence} compact />
+            <ConfidenceBar confidence={a.confidence} severity={a.severity} compact />
           </div>
           <p style={{ marginTop: 7, marginBottom: 0, color: "var(--ink-mid)", fontSize: 12 }}>
             {a.explanation}

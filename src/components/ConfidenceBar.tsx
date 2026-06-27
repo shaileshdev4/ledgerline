@@ -1,14 +1,29 @@
+import type { AnomalySeverity } from "@/types";
+
+const SEVERITY_TONE: Record<AnomalySeverity, string> = {
+  high: "var(--red)",
+  medium: "var(--amber)",
+  low: "var(--ink-dim)",
+};
+
 export function ConfidenceBar({
   confidence,
   compact = false,
+  severity,
 }: {
   confidence: number;
   compact?: boolean;
+  severity?: AnomalySeverity;
 }) {
   const safe = Math.max(0, Math.min(1, confidence));
   const pct = Math.round(safe * 100);
-  const tone =
-    pct >= 90 ? "var(--green)" : pct >= 75 ? "var(--amber)" : "var(--red)";
+  const tone = severity
+    ? SEVERITY_TONE[severity]
+    : pct >= 90
+      ? "var(--green)"
+      : pct >= 75
+        ? "var(--amber)"
+        : "var(--red)";
 
   return (
     <div

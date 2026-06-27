@@ -173,13 +173,16 @@ export function evaluateLedger(
     matchProposals.flatMap((proposal) => proposal.transactionIds),
   ).size;
   const unmatchedCount = Math.max(0, transactions.length - matchedCount);
+  const flaggedTransactionCount = new Set(
+    anomalies.flatMap((anomaly) => anomaly.transactionIds),
+  ).size;
 
   return {
     totalDebits: Number(totalDebits.toFixed(2)),
     transactionCount: transactions.length,
     matchedCount,
     unmatchedCount,
-    flaggedCount: anomalies.length,
+    flaggedCount: flaggedTransactionCount,
     computedAt: new Date().toISOString(),
   };
 }

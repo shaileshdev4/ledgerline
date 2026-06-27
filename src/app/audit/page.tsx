@@ -324,8 +324,18 @@ export default function AuditPage() {
           {panelHeader(
             "Anomaly Report",
             visibleAnomalies.length > 0
-              ? countBadge(`${visibleAnomalies.length} flags`, true)
-              : countBadge("-"),
+              ? countBadge(
+                  (() => {
+                    const txnCount = new Set(
+                      visibleAnomalies.flatMap((a) => a.transactionIds),
+                    ).size;
+                    return txnCount > visibleAnomalies.length
+                      ? `${visibleAnomalies.length} flags · ${txnCount} txns`
+                      : `${visibleAnomalies.length} flags`;
+                  })(),
+                  true,
+                )
+              : countBadge("—"),
           )}
           <div className="audit-panel-body">
             <AnomalyReport

@@ -100,6 +100,7 @@ export interface ReconciliationSummary {
   matchedTransactions: number;
   unmatchedTransactions: number;
   anomalyCount: number;
+  flaggedTransactionCount: number;
   highSeverityCount: number;
   confidence: number;
   requiresHumanReview: boolean;

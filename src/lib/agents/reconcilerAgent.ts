@@ -15,6 +15,9 @@ function computeSummary(
 ): ReconciliationSummary {
   const matched = new Set(matches.flatMap((m) => m.transactionIds)).size;
   const highSeverityCount = anomalies.filter((a) => a.severity === "high").length;
+  const flaggedTransactionCount = new Set(
+    anomalies.flatMap((anomaly) => anomaly.transactionIds),
+  ).size;
   const confidence = Math.max(0, Math.min(1, 1 - anomalies.length * 0.08));
   const requiresHumanReview = highSeverityCount > 0;
 
@@ -23,6 +26,7 @@ function computeSummary(
     matchedTransactions: matched,
     unmatchedTransactions: Math.max(0, transactions.length - matched),
     anomalyCount: anomalies.length,
+    flaggedTransactionCount,
     highSeverityCount,
     confidence: Number(confidence.toFixed(2)),
     requiresHumanReview,
